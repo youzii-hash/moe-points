@@ -1,0 +1,365 @@
+/*
+ * ============================================================
+ * 文件职责：个人主页前端样式
+ * 风格：二次元浅蓝清新，与积分插件统一
+ * ============================================================
+ */
+
+/* ── 整体容器 ─────────────────────────────────────────────── */
+.moe-profile-wrap {
+    max-width:   560px;
+    margin:      20px auto;
+    font-size:   14px;
+    color:       #2e6e9e;
+}
+.moe-profile-section {
+    background:    #fff;
+    border:        1.5px solid #c8e6f7;
+    border-radius: 14px;
+    padding:       16px 20px;
+    margin-bottom: 14px;
+    box-shadow:    0 2px 10px rgba(91,184,245,.08);
+}
+.moe-section-title {
+    font-size:   13px;
+    font-weight: 700;
+    color:       #1e6fa0;
+    margin-bottom: 10px;
+    display:     flex;
+    align-items: center;
+    gap:         6px;
+}
+
+/* ── 头像区 ───────────────────────────────────────────────── */
+.moe-avatar-section { text-align: center; padding: 20px; }
+.moe-avatar-box {
+    position:    relative;
+    display:     inline-block;
+}
+.moe-self-avatar {
+    width:         100px;
+    height:        100px;
+    border-radius: 50%;
+    object-fit:    cover;
+    border:        3px solid #a8d8f0;
+    box-shadow:    0 3px 12px rgba(91,184,245,.25);
+    display:       block;
+}
+.moe-avatar-change-btn {
+    position:      absolute;
+    bottom:        2px;
+    right:         2px;
+    width:         26px;
+    height:        26px;
+    border-radius: 50%;
+    background:    #5bb8f5;
+    border:        2px solid #fff;
+    color:         #fff;
+    font-size:     12px;
+    cursor:        pointer;
+    display:       flex;
+    align-items:   center;
+    justify-content: center;
+    padding:       0;
+    transition:    background .15s;
+}
+.moe-avatar-change-btn:hover { background: #3a9cde; }
+
+/* 头像选择面板 */
+.moe-avatar-panel {
+    margin-top:    14px;
+    padding:       14px;
+    background:    #f0f8ff;
+    border:        1px solid #b8dff5;
+    border-radius: 10px;
+}
+.moe-avatar-panel-tip { font-size:12px; color:#5a90b8; margin:0 0 10px; }
+.moe-avatar-gallery {
+    display:   flex;
+    flex-wrap: wrap;
+    gap:       8px;
+    margin-bottom: 10px;
+}
+.moe-gallery-item {
+    width:         56px;
+    height:        56px;
+    border-radius: 50%;
+    object-fit:    cover;
+    border:        2.5px solid transparent;
+    cursor:        pointer;
+    transition:    border-color .15s, transform .15s;
+}
+.moe-gallery-item:hover   { border-color: #5bb8f5; transform: scale(1.05); }
+.moe-gallery-item.selected { border-color: #3a9cde; box-shadow: 0 0 0 3px rgba(91,184,245,.3); }
+
+/* ── 资料行 ───────────────────────────────────────────────── */
+.moe-profile-row {
+    display:     flex;
+    align-items: center;
+    gap:         10px;
+    min-height:  32px;
+}
+.moe-profile-label {
+    min-width:   64px;
+    font-size:   13px;
+    color:       #7ab8d8;
+    flex-shrink: 0;
+}
+.moe-profile-val {
+    flex:        1;
+    font-size:   14px;
+    color:       #2a6a9a;
+    word-break:  break-all;
+}
+.moe-bio-val { white-space: pre-wrap; }
+
+/* ── 按钮 ─────────────────────────────────────────────────── */
+.moe-edit-btn {
+    padding:       4px 12px;
+    border:        1px solid #a8d8f0;
+    border-radius: 20px;
+    background:    #fff;
+    color:         #3a9cde;
+    font-size:     12px;
+    cursor:        pointer;
+    white-space:   nowrap;
+    transition:    background .15s;
+    flex-shrink:   0;
+}
+.moe-edit-btn:hover  { background: #eaf6ff; }
+.moe-btn-sm {
+    padding:       4px 14px;
+    border:        1px solid #a8d8f0;
+    border-radius: 20px;
+    background:    #fff;
+    color:         #3a9cde;
+    font-size:     12px;
+    cursor:        pointer;
+    transition:    background .15s;
+}
+.moe-btn-sm:hover   { background: #eaf6ff; }
+.moe-btn-primary {
+    padding:       7px 22px;
+    border:        none;
+    border-radius: 20px;
+    background:    linear-gradient(135deg,#5bb8f5,#3a9cde);
+    color:         #fff;
+    font-size:     13px;
+    font-weight:   600;
+    cursor:        pointer;
+    transition:    opacity .15s;
+}
+.moe-btn-primary:hover { opacity: .88; }
+
+/* ── 编辑弹窗 ─────────────────────────────────────────────── */
+#moe-edit-overlay {
+    position:   fixed;
+    inset:      0;
+    background: rgba(60,120,180,.15);
+    backdrop-filter: blur(3px);
+    z-index:    9999;
+    display:    flex;
+    align-items:center;
+    justify-content: center;
+}
+.moe-edit-modal {
+    background:    #fff;
+    border:        1.5px solid #b8dff5;
+    border-radius: 16px;
+    width:         min(360px, calc(100vw - 32px));
+    box-shadow:    0 8px 32px rgba(91,184,245,.2);
+    overflow:      hidden;
+}
+.moe-edit-modal-hd {
+    display:     flex;
+    align-items: center;
+    padding:     13px 18px;
+    background:  linear-gradient(135deg,#cce9fa,#dff2ff);
+    border-bottom: 1px solid #b0d8f0;
+}
+.moe-edit-modal-hd span { flex:1; font-weight:700; color:#1e6fa0; font-size:14px; }
+.moe-edit-modal-hd button {
+    background: rgba(255,255,255,.6);
+    border:     1px solid #a0cde8;
+    border-radius: 6px;
+    width:      26px;
+    height:     26px;
+    cursor:     pointer;
+    font-size:  16px;
+    color:      #5ba8d4;
+    display:    flex;
+    align-items:center;
+    justify-content:center;
+    padding:    0;
+}
+.moe-edit-modal-bd {
+    padding: 18px 20px 10px;
+}
+.moe-edit-modal-bd input,
+.moe-edit-modal-bd textarea {
+    width:         100%;
+    padding:       8px 12px;
+    border:        1.5px solid #c8e6f7;
+    border-radius: 8px;
+    font-size:     14px;
+    outline:       none;
+    color:         #2a6a9a;
+    margin-bottom: 10px;
+    box-sizing:    border-box;
+    transition:    border-color .15s;
+}
+.moe-edit-modal-bd input:focus,
+.moe-edit-modal-bd textarea:focus { border-color: #5bb8f5; }
+.moe-edit-modal-bd textarea { resize: vertical; min-height: 80px; }
+.moe-edit-modal-bd label { font-size:12px; color:#7ab8d8; display:block; margin-bottom:4px; }
+.moe-edit-modal-ft {
+    padding:     12px 20px 16px;
+    display:     flex;
+    gap:         10px;
+    align-items: center;
+}
+.moe-edit-msg {
+    font-size: 12px;
+    margin:    0 0 8px;
+    padding:   5px 10px;
+    border-radius: 6px;
+}
+.moe-edit-msg.ok  { background:#eafaf1; color:#27ae60; }
+.moe-edit-msg.err { background:#fef0f0; color:#e74c3c; }
+
+/* ── 投稿文章列表 ─────────────────────────────────────────── */
+.moe-post-list {
+    list-style: none;
+    margin:     0;
+    padding:    0;
+}
+.moe-post-list li { border-bottom: 1px solid #eaf5fb; }
+.moe-post-list li:last-child { border-bottom: none; }
+.moe-post-link {
+    display:     flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:     9px 4px;
+    text-decoration: none;
+    transition:  background .12s;
+    border-radius: 6px;
+}
+.moe-post-link:hover { background: #f0f8ff; }
+.moe-post-title { color:#2a6a9a; font-size:13px; flex:1; }
+.moe-post-date  { color:#9ac8e0; font-size:12px; margin-left:8px; white-space:nowrap; }
+.moe-empty-tip  { color:#9ac8e0; font-size:13px; padding:8px 4px; }
+
+/* ── 消息通知 ─────────────────────────────────────────────── */
+.moe-notice-list {
+    max-height: 220px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #a8d8f0 transparent;
+}
+.moe-notice-item {
+    padding:       8px 6px;
+    border-bottom: 1px solid #eaf5fb;
+    font-size:     13px;
+    color:         #5a90b8;
+    line-height:   1.5;
+}
+.moe-notice-item:last-child { border-bottom: none; }
+.moe-notice-item.moe-unread { background: #f0f8ff; border-radius: 6px; }
+.moe-notice-from   { font-weight: 700; color: #2a7bb5; }
+.moe-notice-excerpt {
+    color:           #2a6a9a;
+    text-decoration: none;
+    font-style:      italic;
+}
+.moe-notice-excerpt:hover { text-decoration: underline; }
+.moe-notice-time   { color:#b0cfe0; font-size:11px; margin-left:6px; }
+.moe-badge-red {
+    display:       inline-block;
+    background:    #e74c3c;
+    color:         #fff;
+    border-radius: 10px;
+    font-size:     11px;
+    padding:       1px 7px;
+    font-weight:   700;
+    margin-left:   4px;
+}
+.moe-tip { color:#7ab8d8; padding:16px 0; }
+
+/* ── 公开主页 ─────────────────────────────────────────────── */
+.moe-profile-public .moe-public-header {
+    display:       flex;
+    align-items:   center;
+    gap:           18px;
+    padding:       20px;
+    background:    linear-gradient(135deg,#eaf6ff,#f5f0ff);
+    border-radius: 14px;
+    margin-bottom: 14px;
+    border:        1.5px solid #c8e6f7;
+}
+.moe-public-avatar {
+    width:         80px;
+    height:        80px;
+    border-radius: 50%;
+    object-fit:    cover;
+    border:        3px solid #a8d8f0;
+    flex-shrink:   0;
+}
+.moe-public-name { font-size:17px; font-weight:700; color:#1e6fa0; margin-bottom:5px; }
+.moe-public-bio  { font-size:13px; color:#5a90b8; line-height:1.5; }
+
+/* ── 文章作者卡片 ─────────────────────────────────────────── */
+.moe-author-card {
+    display:         flex;
+    align-items:     center;
+    gap:             14px;
+    padding:         14px 18px;
+    margin:          20px 0;
+    background:      rgba(220,242,255,.55);
+    backdrop-filter:        blur(12px) saturate(1.4);
+    -webkit-backdrop-filter: blur(12px) saturate(1.4);
+    border:          1px solid rgba(255,255,255,.75);
+    border-radius:   14px;
+    text-decoration: none;
+    transition:      box-shadow .18s, transform .18s;
+    box-shadow:      0 2px 12px rgba(91,184,245,.12),
+                     inset 0 1px 0 rgba(255,255,255,.8);
+}
+.moe-author-card:hover {
+    box-shadow:  0 5px 20px rgba(91,184,245,.2),
+                 inset 0 1px 0 rgba(255,255,255,.8);
+    transform:   translateY(-2px);
+}
+.moe-author-card-avatar {
+    width:         52px;
+    height:        52px;
+    border-radius: 50%;
+    object-fit:    cover;
+    border:        2.5px solid rgba(91,184,245,.5);
+    flex-shrink:   0;
+}
+.moe-author-card-lbl {
+    font-size:   11px;
+    color:       #8bbdd8;
+    font-weight: 400;
+    margin-right: 2px;
+}
+.moe-author-card-name {
+    font-size:   15px;
+    font-weight: 700;
+    color:       #1e6fa0;
+    margin-bottom: 5px;
+    display:     flex;
+    align-items: baseline;
+}
+.moe-author-card-bio {
+    font-size: 12px;
+    color:     #5a90b8;
+    display:   flex;
+    align-items: baseline;
+}
+
+/* ── 响应式 ───────────────────────────────────────────────── */
+@media (max-width:480px) {
+    .moe-profile-wrap { margin: 12px; }
+    .moe-public-header { flex-direction: column; text-align: center; }
+}

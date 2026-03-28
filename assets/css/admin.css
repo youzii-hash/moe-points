@@ -1,0 +1,52 @@
+/*
+ * ============================================================
+ * 文件职责：后台管理界面样式
+ *   - 包裹容器、卡片、表单、标签等
+ * ============================================================
+ */
+
+.moe-wrap { max-width: 960px; }
+
+/* ── 卡片容器 ───────────────────────────────────────────── */
+.moe-card {
+    background:    #fff;
+    border:        1px solid #c8e6f7;
+    border-radius: 10px;
+    padding:       20px 24px;
+    margin-bottom: 20px;
+    box-shadow:    0 2px 8px rgba(91,184,245,.1);
+}
+.moe-card h2 {
+    margin:       0 0 16px;
+    font-size:    16px;
+    color:        #3a9cde;
+    border-bottom: 2px solid #eaf6ff;
+    padding-bottom: 8px;
+}
+
+/* ── 等级表格 ───────────────────────────────────────────── */
+.moe-levels-table th { background: #eaf6ff; color: #3a9cde; }
+
+/* ── 标签 ───────────────────────────────────────────────── */
+.moe-tag {
+    display:       inline-block;
+    padding:       2px 10px;
+    border-radius: 20px;
+    font-size:     12px;
+    background:    #eaf6ff;
+    color:         #3a9cde;
+}
+.moe-tag-used { background: #fef0f0; color: #c0392b; }
+.moe-tag-new  { background: #eafaf1; color: #27ae60; }
+
+/* ── 积分颜色 ──────────────────────────────────────────── */
+.moe-plus  { color: #27ae60; font-weight: 700; }
+.moe-minus { color: #e74c3c; font-weight: 700; }
+
+/* ── 日志工具栏 ────────────────────────────────────────── */
+.moe-log-toolbar { margin-bottom: 16px; }
+.moe-log-toolbar select { padding: 4px 8px; }
+
+/* ── 反馈文字 ──────────────────────────────────────────── */
+.moe-feedback { color: #27ae60; font-weight: 600; min-height: 20px; }
+.moe-link { color: #5bb8f5; margin-left: 6px; font-size: 13px; }
